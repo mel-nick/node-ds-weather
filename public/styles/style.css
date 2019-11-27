@@ -1,0 +1,96 @@
+.wrapper {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: rgb(49, 202, 212);
+}
+
+.form-control {
+  outline: none;
+  border: none;
+}
+
+.location {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.current-temp {
+  font-size: 50px;
+  font-weight: 700;
+}
+
+.feels-like {
+  font-size: 18px;
+  color: #40464d;
+  font-weight: 500;
+}
+
+.weather-summary {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.details-item {
+  color: #40464d;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.value {
+  color: black;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: none;
+}
+
+.daily-conditions {
+  margin: 1rem 0;
+  padding: 10px;
+}
+
+.daily-week-day {
+  padding: 10px 0;
+  border-top: 1px solid black;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.min-temp {
+  margin-right: 5px;
+  color: #677988;
+  font-weight: 500
+}
+
+.wind-speed-daily {
+  margin: 0 5px;
+  font-weight: 600;
+}
+
+.wind-speed-daily::after {
+  content: 'm/s';
+  margin-left: 3px;
+}
+
+.max-temp::after {
+  content: '°C';
+  margin-left: 3px;
+  font-weight: 600;
+}
+
+.max-temp {
+  font-weight: 500
+}
+
+.powered-by-logo {
+  max-width: 100px;
+  padding: 10px;
+}
