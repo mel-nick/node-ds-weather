@@ -30,7 +30,6 @@ searchBox.addListener('places_changed', () => {
 })
 // serch weather function
 function searchWeather(place, latitude, longitude){
-  console.log('place in func',place )
   fetch('/weather', {
     method: 'POST',
     headers: {

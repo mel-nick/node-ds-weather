@@ -18,7 +18,6 @@ if (process.env.NODE_ENV !== 'production') {
       responseType: 'json'
     })
     .then(data => res.json(data.data))
-    // .then(data => console.log(data))
     .catch(error=>console.error(error))
 
   })
