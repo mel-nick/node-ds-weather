@@ -93,4 +93,6 @@
 .powered-by-logo {
   max-width: 100px;
   padding: 10px;
+  filter: invert(19%) sepia(37%) saturate(4559%) hue-rotate(8deg) brightness(112%) contrast(106%);
+  -webkit-filter: invert(19%) sepia(37%) saturate(4559%) hue-rotate(8deg) brightness(112%) contrast(106%);
 }
