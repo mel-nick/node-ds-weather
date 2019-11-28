@@ -5,17 +5,23 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  background-color:#FFC107;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  background-color: #FFC107;
 }
 
 .form-control {
   outline: none;
   border: none;
+  background-color: #FFC107;
+}
+
+.form-control:focus {
+  background-color: #FFC107;
+
 }
 
 .location {
@@ -95,4 +101,27 @@
   padding: 10px;
   filter: invert(19%) sepia(37%) saturate(4559%) hue-rotate(8deg) brightness(112%) contrast(106%);
   -webkit-filter: invert(19%) sepia(37%) saturate(4559%) hue-rotate(8deg) brightness(112%) contrast(106%);
+}
+
+/* pac */
+.pac-container {
+  background-color: #FFC107
+}
+
+.pac-item {
+  border-top: 1px solid #343a40;
+  color: #686b6c;
+  font-weight: 600
+}
+
+.pac-item:last-child {
+  border-bottom: 1px solid #343a40
+}
+
+.pac-item:hover {
+  background-color: #c69b1a
+}
+
+.pac-icon {
+  filter: invert(81%) sepia(0%) saturate(1206%) hue-rotate(169deg) brightness(90%) contrast(99%);
 }
