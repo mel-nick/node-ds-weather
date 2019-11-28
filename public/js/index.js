@@ -1,18 +1,19 @@
 //default weather by location
 function getDefaultWeather(){
-  navigator.geolocation.getCurrentPosition(success, error);
-    function success(position) {
-    latitude = position.coords.latitude;
-    longitude = position.coords.longitude;
-    const place = `Location: ${latitude}, ${longitude}`
-    searchWeather(place, latitude, longitude)
-    
-  }
-  function error(error){
-    console.error(error.message)
-  }
-  
+      $.ajax({
+      url: 'https://geolocation-db.com/json/' ,
+      jsonCallback: "callback",
+      dataType: "json",
+      success: function(location) {
+        console.log(location)
+        latitude = location.latitude;
+        longitude = location.longitude;
+        const place = `${location.city}, ${location.country_name}`;
+        searchWeather(place, latitude, longitude)  
+      }
+    });
 }
+
 getDefaultWeather()
 
 // serch weather
