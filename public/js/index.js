@@ -87,7 +87,7 @@ const icon = new Skycons({
   color: '#222'
 })
 const headerLogo = new Skycons({
-  color: '#fff'
+  color: '#FFC107'
 })
 
 const locationElement = document.querySelector('[data-location]')
