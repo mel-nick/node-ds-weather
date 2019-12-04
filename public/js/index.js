@@ -5,10 +5,9 @@ function getDefaultWeather(){
       jsonCallback: "callback",
       dataType: "json",
       success: function(location) {
-        console.log(location)
         latitude = location.latitude;
         longitude = location.longitude;
-        const place = `${location.city}, ${location.country_name}`;
+        const place = location.city ? `${location.city}, ${location.country_name}` : `Unkown city in ${location.country_name}`;
         searchWeather(place, latitude, longitude)  
       }
     });
