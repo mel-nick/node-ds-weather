@@ -2,8 +2,8 @@
 function getDefaultWeather(){
   $.get("https://ipinfo.io?token=ca7bb26763c6c3", function(response) {
     let location = response.loc.split(',')
-    latitude = location[0];
-    longitude = location[1]
+    const latitude = location[0];
+    const longitude = location[1]
     const place = response.city ? `${response.city}, ${response.country}` : `Unkown city in ${location.country}`;
     searchWeather(place, latitude, longitude)
   }, "json")
