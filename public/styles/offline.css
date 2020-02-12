@@ -1,0 +1,16 @@
+.offline{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFC107;
+}
+.offline-img{
+    max-width: 300px;
+}
+.offline-text{
+    font-family: 'Roboto', sans-serif;
+    color: #000;
+
+}

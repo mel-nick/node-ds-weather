@@ -1,3 +1,5 @@
+getDefaultWeather()
+
 //default weather by location
 function getDefaultWeather(){
   $.get("https://ipinfo.io?token=ca7bb26763c6c3", function(response) {
@@ -9,15 +11,12 @@ function getDefaultWeather(){
   }, "json")
 }
 
-getDefaultWeather()
-
 // search weather
 const searchElement = document.getElementById('search')
 const searchBox = new google.maps.places.SearchBox(searchElement)
 
 searchBox.addListener('places_changed', () => {
   const place = searchBox.getPlaces()[0]
-  
   if (place == null) return
   const latitude = place.geometry.location.lat()
   const longitude = place.geometry.location.lng()
