@@ -1,21 +1,17 @@
 //default weather by location
 function getDefaultWeather(){
-      $.ajax({
-      url: 'https://geolocation-db.com/json/' ,
-      jsonCallback: "callback",
-      dataType: "json",
-      success: function(location) {
-        latitude = location.latitude;
-        longitude = location.longitude;
-        const place = location.city ? `${location.city}, ${location.country_name}` : `Unkown city in ${location.country_name}`;
-        searchWeather(place, latitude, longitude)  
-      }
-    });
+  $.get("https://ipinfo.io?token=ca7bb26763c6c3", function(response) {
+    let location = response.loc.split(',')
+    latitude = location[0];
+    longitude = location[1]
+    const place = response.city ? `${response.city}, ${response.country}` : `Unkown city in ${location.country}`;
+    searchWeather(place, latitude, longitude)
+  }, "json")
 }
 
 getDefaultWeather()
 
-// serch weather
+// search weather
 const searchElement = document.getElementById('search')
 const searchBox = new google.maps.places.SearchBox(searchElement)
 
@@ -82,7 +78,7 @@ function searchWeather(place, latitude, longitude){
   })
 }
 
-
+//icons
 const icon = new Skycons({
   color: '#222'
 })
@@ -100,9 +96,8 @@ const humidityElement = document.querySelector('[data-humidity]')
 const uvElement = document.querySelector('[data-uv]')
 const pressureElement = document.querySelector('[data-pressure]')
 const visibilityElement = document.querySelector('[data-visibility]')
-headerLogo.set('headerLogo', 'partly-cloudy-day')
-headerLogo.play()
 
+//set weather data
 function setWeatherData(data, place) {
   locationElement.textContent = place
   currentTemperatureElement.textContent = `${Math.round(data.currently.temperature)} °C`
@@ -115,6 +110,11 @@ function setWeatherData(data, place) {
   pressureElement.textContent = `${Math.round(data.currently.pressure)} hPa`
   visibilityElement.textContent = `${Math.round(data.currently.visibility)} km`
 
+  //set main icon
   icon.set('icon', data.currently.icon)
   icon.play()
+
+  //set header icon to be equal currrently icon
+  headerLogo.set('headerLogo', data.currently.icon)
+  headerLogo.play()
 }
