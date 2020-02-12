@@ -110,7 +110,7 @@ function setWeatherData(data, place) {
   pressureElement.textContent = `${Math.round(data.currently.pressure)} hPa`
   visibilityElement.textContent = `${Math.round(data.currently.visibility)} km`
 
-  //set main icon
+  //set currently icon
   icon.set('icon', data.currently.icon)
   icon.play()
 
