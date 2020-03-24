@@ -112,7 +112,7 @@ function setWeatherData(data, place) {
   summaryElement.textContent = data.currently.summary
   windSpeedElement.textContent = `${Math.round(data.currently.windSpeed)} m/s`
   windDirectionElement.style.transform = `rotate(${data.currently.windBearing}deg)`
-  humidityElement.textContent = `${data.currently.humidity * 100} %`
+  humidityElement.textContent =`${Math.round(data.currently.humidity * 100)} %`
   uvElement.textContent = `${data.currently.uvIndex}`
   pressureElement.textContent = `${Math.round(data.currently.pressure)} hPa`
   visibilityElement.textContent = `${Math.round(data.currently.visibility)} km`
