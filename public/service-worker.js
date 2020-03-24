@@ -6,20 +6,22 @@ const DATA_CACHE_NAME = 'data-cache-v1'
 
 // Add list of files to cache here.
 const FILES_TO_CACHE = [
-    './offline.html',
-    './styles/offline.css',
-    './img/offline.png'
-  ];
+ '/',
+ '/index.html',
+ '/js/index.js',
+ '/styles/style.css',
+ '/img/poweredby-darkbackground.png'
+];
 
 // Precache static resources here.
 self.addEventListener('install', (evt) => {
   console.log('[ServiceWorker] Install');
-   evt.waitUntil(
+  evt.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       console.log('[ServiceWorker] Pre-caching offline page');
       return cache.addAll(FILES_TO_CACHE);
     })
-);
+  );
   self.skipWaiting();
 });
 
@@ -35,25 +37,24 @@ self.addEventListener('activate', (evt) => {
         }
       }));
     })
-);
+  );
   self.clients.claim();
 });
-// fetch event handler here.
+// fetch event handler.
 self.addEventListener('fetch', (evt) => {
   console.log('[ServiceWorker] Fetch', evt.request.url);
   if (evt.request.mode !== 'navigate') {
-    // Not a page navigation, bail.
     return;
   }
   evt.respondWith(
-      fetch(evt.request)
-          .catch(() => {
-            return caches.open(CACHE_NAME)
-                .then((cache) => {
-                  return cache.match('offline.html');
-                });
-          })
-  );
+    fetch(evt.request)
+    .catch(() => {
+        return caches.open(CACHE_NAME)
+          .then((cache) => {
+              return cache.match('offline.html');
+          });
+    })
+);
 
 });
 
@@ -63,9 +64,7 @@ self.addEventListener('fetch', (evt) => {
 
 
 
-  // Precache static resources here.
+// Precache static resources here.
 
 
 // Remove previous cached data from disk.
-
-

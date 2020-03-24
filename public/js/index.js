@@ -15,6 +15,14 @@ function getDefaultWeather(){
 const searchElement = document.getElementById('search')
 const searchBox = new google.maps.places.SearchBox(searchElement)
 
+//prevent page reload on 'enter' key while submitiing search-box
+google.maps.event.addDomListener(searchElement, 'keydown', function (e) {
+  if (e.keyCode == 13) {
+      e.preventDefault();
+  }
+});
+
+//searchbox listener
 searchBox.addListener('places_changed', () => {
   const place = searchBox.getPlaces()[0]
   if (place == null) return
@@ -116,4 +124,8 @@ function setWeatherData(data, place) {
   //set header icon to be equal currrently icon
   headerLogo.set('headerLogo', data.currently.icon)
   headerLogo.play()
+}
+  // get forecast from cash
+function getForecastFromCache(coords) {
+  
 }
