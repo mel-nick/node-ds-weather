@@ -35,9 +35,9 @@ self.addEventListener('activate', (evt) => {
 });
 // fetch event handler.
 self.addEventListener('fetch', (evt) => {
-  if (evt.request.mode !== 'navigate') {
-    return;
-  }
+  // if (evt.request.mode !== 'navigate') {
+  //  return;
+  // }
   evt.respondWith(
     fetch(evt.request)
     .catch(() => {
