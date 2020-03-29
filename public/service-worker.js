@@ -6,11 +6,7 @@ const DATA_CACHE_NAME = 'data-cache-v1'
 
 // Add list of files to cache here.
 const FILES_TO_CACHE = [
- '/',
- '/index.html',
- '/js/index.js',
- '/styles/style.css',
- '/img/poweredby-darkbackground.png'
+  '/offline.html'
 ];
 
 // Precache static resources here.
@@ -49,22 +45,10 @@ self.addEventListener('fetch', (evt) => {
   evt.respondWith(
     fetch(evt.request)
     .catch(() => {
-        return caches.open(CACHE_NAME)
-          .then((cache) => {
-              return cache.match('offline.html');
-          });
+      return caches.open(CACHE_NAME)
+        .then((cache) => {
+          return cache.match('offline.html');
+        });
     })
-);
-
+  );
 });
-
-
-
-
-
-
-
-// Precache static resources here.
-
-
-// Remove previous cached data from disk.
