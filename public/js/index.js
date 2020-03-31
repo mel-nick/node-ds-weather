@@ -2,11 +2,11 @@ getDefaultWeather()
 
 //default weather by location
 function getDefaultWeather(){
-  $.get("https://ipinfo.io?token=ca7bb26763c6c3", function(response) {
-    let location = response.loc.split(',')
+  $.get("https://ipinfo.io?token=ca7bb26763c6c3", function({loc, city, country}) {
+    const location = loc.split(',')
     const latitude = location[0];
     const longitude = location[1]
-    const place = response.city ? `${response.city}, ${response.country}` : `Unkown city in ${location.country}`;
+    const place = city && `${city}, ${country}`
     searchWeather(place, latitude, longitude)
   }, "json")
 }
@@ -86,7 +86,7 @@ function searchWeather(place, latitude, longitude){
 }
 
 //icons
-const icon = new Skycons({
+const currentIcon = new Skycons({
   color: '#222'
 })
 const headerLogo = new Skycons({
@@ -106,26 +106,35 @@ const visibilityElement = document.querySelector('[data-visibility]')
 
 //set weather data
 function setWeatherData(data, place) {
+  const {
+    temperature, 
+    apparentTemperature, 
+    summary,
+    windSpeed,
+    windBearing,
+    humidity,
+    uvIndex,
+    pressure,
+    visibility,
+    icon
+  } = data.currently;
+
   locationElement.textContent = place
-  currentTemperatureElement.textContent = `${Math.round(data.currently.temperature)} °C`
-  feelsLikeElement.textContent = `${Math.round(data.currently.apparentTemperature)} °C`
-  summaryElement.textContent = data.currently.summary
-  windSpeedElement.textContent = `${Math.round(data.currently.windSpeed)} m/s`
-  windDirectionElement.style.transform = `rotate(${data.currently.windBearing}deg)`
-  humidityElement.textContent =`${Math.round(data.currently.humidity * 100)} %`
-  uvElement.textContent = `${data.currently.uvIndex}`
-  pressureElement.textContent = `${Math.round(data.currently.pressure)} hPa`
-  visibilityElement.textContent = `${Math.round(data.currently.visibility)} km`
+  currentTemperatureElement.textContent = `${Math.round(temperature)} °C`
+  feelsLikeElement.textContent = `${Math.round(apparentTemperature)} °C`
+  summaryElement.textContent = summary
+  windSpeedElement.textContent = `${Math.round(windSpeed)} m/s`
+  windDirectionElement.style.transform = `rotate(${windBearing}deg)`
+  humidityElement.textContent =`${Math.round(humidity * 100)} %`
+  uvElement.textContent = `${uvIndex}`
+  pressureElement.textContent = `${Math.round(pressure)} hPa`
+  visibilityElement.textContent = `${Math.round(visibility)} km`
 
   //set currently icon
-  icon.set('icon', data.currently.icon)
-  icon.play()
+  currentIcon.set('icon', icon)
+  currentIcon.play()
 
   //set header icon to be equal currrently icon
-  headerLogo.set('headerLogo', data.currently.icon)
+  headerLogo.set('headerLogo', icon)
   headerLogo.play()
-}
-  // get forecast from cash
-function getForecastFromCache(coords) {
-  
 }
